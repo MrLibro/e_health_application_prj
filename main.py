@@ -11,7 +11,7 @@ import userinterfaces.layouts_icij_user as ly_icij_user
 import userinterfaces.layout_pubmed_summary as ly_sum_pubmed
 import userinterfaces.layout_pubmed_user as ly_user_pubmed
 import userinterfaces.medicalsubject_lookup as medlook
-import preprocessing as pre
+import load
 import database_presentation as dbp
 import database_functions as dbf
 
@@ -39,7 +39,7 @@ app.validation_layout = html.Div([
 
 
 ##########  Load Databases and Dictionaries  ##########
-
+devices = load.load_db('devices', 'database')
 
 
 ##########  callbacks  ############
@@ -94,7 +94,7 @@ def update_output( input1, input2):
     [dash.dependencies.Input('charts-dropdown', 'value')])
 def update_output(value):
     if value == 'wordmap':
-        result = ly_icij_user.map_graph()
+        result = ly_icij_user.map_graph(devices)
     elif value == 'category':
         result = ly_icij_user.categories()
     else:

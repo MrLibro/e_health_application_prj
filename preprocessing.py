@@ -54,8 +54,8 @@ def encodeable_date_feature(df, col_date, name):
 
     return df
 
-
-def db_finalization():
+"""""
+def database_loader(name, ):
     database = {}
     devices = ld.load_db('devices', 'database')
     events = ld.load_db('events', 'database')
@@ -64,6 +64,7 @@ def db_finalization():
     countries = ld.load_db('countries', 'dictionary')
     train_dentalimplant = ld.load_db('train_dentalimplant_papers', 'database')
     dic_dentalimplant = ld.load_db('pubmed_dentalimplant', 'dictionary')
+    final_database = ld.load_db('final_database','database')
 
     devices = risk_normalization(devices)
 
@@ -74,4 +75,6 @@ def db_finalization():
     database['manus'] = manus
     database['wiki_countries'] = wiki_countries
     database['countries'] = countries
+    database['final_database'] = final_database
     return database
+"""""
